@@ -19,7 +19,7 @@ require_once '../layout/header.php';
         <label for="description">Mô tả:</label> <br>
         <textarea name="description" id="description" cols="30" rows="10"></textarea> <br>
         <label for="phoneNumber">Số điện thoại:</label> <br>
-        <input type="text" name="phone_number" id="phoneNumber"> <br>
+        <input type="number" name="phone_number" id="phoneNumber"> <br>
         <label for="image">Ảnh:</label> <br>
         <input type="file" name="image" id="image"> <br><br>
         <input type="submit" value="Thêm">

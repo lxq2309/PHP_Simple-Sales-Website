@@ -28,7 +28,7 @@ require_once '../layout/header.php';
                     <td>
                         <?php echo $manufacturer['manufacturer_id'] ?>
                     </td>
-                    <td><img src="<?php echo $manufacturer['image'] ?>" alt="<?php echo $manufacturer['name'] ?>" width="100"></td>
+                    <td><img src="<?php echo $manufacturer['image'] ?>" alt="<?php echo $manufacturer['name'] ?>" width="100" height="100"></td>
                     <td>
                         <?php echo $manufacturer['name'] ?>
                     </td>
