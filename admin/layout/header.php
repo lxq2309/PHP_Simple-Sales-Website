@@ -12,25 +12,26 @@ require_once '../../connection.php';
     <title>
         <?php echo $title ?>
     </title>
-    <style>
-        a {
-            text-decoration: none;
-        }
-
-        .header>ul>li>a.active {
-            text-decoration: underline;
-        }
-    </style>
+    <?php require_once 'style.php' ?>
 </head>
 
 <body>
     <div class="header">
-        <h1><a href="<?php echo $ADMIN_URL ?>">Trang quản trị</a></h1>
+        <div class="left">
+            <h1><a href="<?php echo $ADMIN_URL . '/root' ?>">Admin Panel</a></h1>
+        </div>
+        <div class="right">
+            <ul>
+                <li><a href="<?php echo $WEB_URL . '/' ?>">Về trang khách</a></li>
+                <li><a href="#">Đăng xuất</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="sidebar">
         <ul>
             <li><a class="<?php echo ($currentFolder == "root" ? "active" : '') ?>"
-                    href="<?php echo $ADMIN_URL . '/' ?>">Trang chủ</a></li>
-            <li><a class="<?php echo ($currentFolder == "root" ? "active" : '') ?>"
-                    href="<?php echo $WEB_URL . '/' ?>">Trang khách hàng</a></li>
+                    href="<?php echo $ADMIN_URL . '/root' ?>">Trang chủ</a></li>
             <li><a class="<?php echo ($currentFolder == "manufactures" ? "active" : '') ?>"
                     href="<?php echo $ADMIN_URL . '/manufacturers' ?>">Nhà sản xuất</a></li>
             <li><a class="<?php echo ($currentFolder == "products" ? "active" : '') ?>"

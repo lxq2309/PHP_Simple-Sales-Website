@@ -8,6 +8,8 @@
 
     .header a.active {
         text-decoration: underline;
+        font-weight: bolder;
+        color: green;
     }
 
     .header ul li {
@@ -48,7 +50,7 @@
 
     .product:hover {
         border-color: #fff;
-        background-color: #9ccc9c;
+        background-color: rgba(218, 242, 218, 0.4);
     }
 
     .product .image {
