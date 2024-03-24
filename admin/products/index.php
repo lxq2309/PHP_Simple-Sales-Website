@@ -31,7 +31,7 @@ require_once '../layout/header.php';
                     <td>
                         <?php echo $product['product_id'] ?>
                     </td>
-                    <td><img src="<?php echo $product['image'] ?>" alt="<?php echo $product['name'] ?>" width="100"
+                    <td><img src="<?php echo $WEB_URL . $product['image'] ?>" alt="<?php echo $product['name'] ?>" width="100"
                             height="100"></td>
                     <td>
                         <a href="#">

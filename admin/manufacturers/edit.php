@@ -33,7 +33,7 @@ $manufacturer = mysqli_fetch_assoc($manufacturers);
         <label for="phoneNumber">Số điện thoại:</label> <br>
         <input type="text" name="phone_number" id="phoneNumber" value="<?php echo $manufacturer['phone_number'] ?>"> <br>
         <label for="image">Ảnh:</label> <br>
-        <img src="<?php echo $manufacturer['image'] ?>" alt="<?php echo $manufacturer['name'] ?>" width="100"> <br>
+        <img src="<?php echo $WEB_URL . $manufacturer['image'] ?>" alt="<?php echo $manufacturer['name'] ?>" width="100"> <br>
         <input type="hidden" name="old_image" value="<?php echo $manufacturer['image'] ?>">
         <input type="file" name="new_image" id="image"> <br><br>
         <input type="submit" value="Sửa">

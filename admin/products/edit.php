@@ -53,7 +53,7 @@ $manufacturers = mysqli_query($conn, $sql);
         </select>
         <br>
         <label for="image">Ảnh:</label> <br>
-        <img src="<?php echo $product['image'] ?>" alt="<?php echo $product['name'] ?>" width="100"> <br>
+        <img src="<?php echo $WEB_URL . $product['image'] ?>" alt="<?php echo $product['name'] ?>" width="100"> <br>
         <input type="hidden" name="old_image" value="<?php echo $product['image'] ?>">
         <input type="file" name="new_image" id="image"> <br><br>
         <input type="submit" value="Sửa">

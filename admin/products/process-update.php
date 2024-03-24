@@ -22,9 +22,9 @@ $manufacturer_id = $_POST['manufacturer_id'];
 
 // upload file
 if ($new_image['size'] > 0) {
-    $target_dir = "img/";
+    $target_dir = "/images/products/";
     $target_file = $target_dir . time() . basename($new_image["name"]);
-    move_uploaded_file($new_image["tmp_name"], $target_file);
+    move_uploaded_file($new_image["tmp_name"], '../..' . $target_file);
 } else {
     $target_file = $old_image;
 }
