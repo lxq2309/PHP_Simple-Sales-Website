@@ -7,16 +7,16 @@ if (empty ($_POST['name']) || empty ($_POST['description']) || empty ($_POST['pr
     exit;
 }
 
-$name = $_POST['name'];
-$description = $_POST['description'];
-$price = $_POST['price'];
+$name = addslashes($_POST['name']);
+$description = addslashes($_POST['description']);
+$price = addslashes($_POST['price']);
 $image = $_FILES['image'];
-$manufacturer_id = $_POST['manufacturer_id'];
+$manufacturer_id = addslashes($_POST['manufacturer_id']);
 
 // upload file
 $target_dir = "/images/products/";
-$target_file = $target_dir . time() . basename($new_image["name"]);
-move_uploaded_file($new_image["tmp_name"], '../..' . $target_file);
+$target_file = $target_dir . time() . basename($image["name"]);
+move_uploaded_file($image["tmp_name"], '../..' . $target_file);
 
 // insert
 $sql = "INSERT INTO products(name, description, price, image, manufacturer_id) VALUES ('$name', '$description', '$price', '$target_file', '$manufacturer_id')";

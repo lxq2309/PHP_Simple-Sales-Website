@@ -7,9 +7,9 @@ if (empty ($_POST['name']) || empty ($_POST['description']) || empty ($_POST['ph
     exit;
 }
 
-$name = $_POST['name'];
-$description = $_POST['description'];
-$phone_number = $_POST['phone_number'];
+$name = addslashes($_POST['name']);
+$description = addslashes($_POST['description']);
+$phone_number = addslashes($_POST['phone_number']);
 $image = $_FILES['image'];
 
 // upload file

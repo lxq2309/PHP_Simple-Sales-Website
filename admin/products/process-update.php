@@ -13,12 +13,12 @@ if (empty ($_POST['name']) || empty ($_POST['description']) || empty ($_POST['pr
     exit;
 }
 
-$name = $_POST['name'];
-$description = $_POST['description'];
-$price = $_POST['price'];
-$old_image = $_POST['old_image'];
+$name = addslashes($_POST['name']);
+$description = addslashes($_POST['description']);
+$price = addslashes($_POST['price']);
+$old_image = addslashes($_POST['old_image']);
 $new_image = $_FILES['new_image'];
-$manufacturer_id = $_POST['manufacturer_id'];
+$manufacturer_id = addslashes($_POST['manufacturer_id']);
 
 // upload file
 if ($new_image['size'] > 0) {

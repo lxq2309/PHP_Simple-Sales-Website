@@ -3,6 +3,12 @@ require_once 'config.php';
 require_once 'connection.php';
 ?>
 
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,14 +36,27 @@ require_once 'connection.php';
                 <li>
                     <a href="<?php echo $ADMIN_URL . '/root' ?>">Trang quản trị</a>
                 </li>
-                <li>
-                    <a class="<?php echo ($currentAction == "login" ? "active" : '') ?>"
-                        href="<?php echo $WEB_URL . '/login.php' ?>">Đăng nhập</a>
-                </li>
-                <li>
-                    <a class="<?php echo ($currentAction == "register" ? "active" : '') ?>"
-                        href="<?php echo $WEB_URL . '/register.php' ?>">Đăng ký</a>
-                </li>
+
+                <?php if (!isset ($_SESSION['customer_id'])) { ?>
+                    <li>
+                        <a class="<?php echo ($currentAction == "login" ? "active" : '') ?>"
+                            href="<?php echo $WEB_URL . '/login.php' ?>">Đăng nhập</a>
+                    </li>
+                    <li>
+                        <a class="<?php echo ($currentAction == "register" ? "active" : '') ?>"
+                            href="<?php echo $WEB_URL . '/register.php' ?>">Đăng ký</a>
+                    </li>
+                <?php } else { ?>
+                    <li>
+                        <a class="<?php echo ($currentAction == "user" ? "active" : '') ?>"
+                            href="<?php echo $WEB_URL . '/user.php' . '?id=' . $_SESSION['customer_id'] ?>">
+                            <?php echo $_SESSION['customer_name'] ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $WEB_URL . '/logout.php' ?>">Đăng xuất</a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>

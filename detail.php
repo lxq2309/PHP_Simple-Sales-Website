@@ -9,17 +9,18 @@ $sql = "SELECT products.*, manufacturers.name AS manufacturer_name
         FROM products JOIN manufacturers ON products.manufacturer_id = manufacturers.manufacturer_id
         WHERE product_id = '$id'";
 $product = mysqli_query($conn, $sql)->fetch_assoc();
+
+if (empty ($product)) {
+    header('Location: index.php');
+    exit;
+}
+?>
 ?>
 
 <?php
 $title = $product['name'];
-$currentAction = "index";
+$currentAction = "product-detail";
 require_once 'header.php';
-?>
-
-<?php
-$sql = "SELECT * FROM products";
-$products = mysqli_query($conn, $sql);
 ?>
 
 <div class="main">

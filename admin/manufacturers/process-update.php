@@ -13,10 +13,10 @@ if (empty ($_POST['name']) || empty ($_POST['description']) || empty ($_POST['ph
     exit;
 }
 
-$name = $_POST['name'];
-$description = $_POST['description'];
-$phone_number = $_POST['phone_number'];
-$old_image = $_POST['old_image'];
+$name = addslashes($_POST['name']);
+$description = addslashes($_POST['description']);
+$phone_number = addslashes($_POST['phone_number']);
+$old_image = addslashes($_POST['old_image']);
 $new_image = $_FILES['new_image'];
 
 // upload file

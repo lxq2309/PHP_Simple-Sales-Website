@@ -10,6 +10,12 @@ $products = mysqli_query($conn, $sql);
 ?>
 
 <div class="main">
+    <?php if (isset ($_GET['success'])) { ?>
+        <div style="color: green; text-align: left">
+            <?php echo $_GET['success'] ?>
+        </div>
+    <?php } ?>
+    <h2>DANH SÁCH SẢN PHẨM</h2>
     <?php while ($product = mysqli_fetch_assoc($products)) { ?>
         <div class="col">
             <div class="product">
