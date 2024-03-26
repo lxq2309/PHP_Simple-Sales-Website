@@ -16,7 +16,7 @@ if (empty ($customer)) {
 
 <?php
 $title = $customer['name'];
-$currentAction = "customer";
+$currentAction = "user";
 require_once 'header.php';
 ?>
 
