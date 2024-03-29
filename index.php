@@ -10,7 +10,7 @@ $products = mysqli_query($conn, $sql);
 ?>
 
 <div class="main">
-    <?php if (isset ($_SESSION['success'])) { ?>
+    <?php if (isset($_SESSION['success'])) { ?>
         <div style="color: green; text-align: left">
             <?php echo $_SESSION['success'] ?>
             <?php unset($_SESSION['success']) ?>
@@ -30,6 +30,7 @@ $products = mysqli_query($conn, $sql);
                     <?php echo $product['price'] ?> VND
                 </div>
                 <div class="detail">
+                    <a href="<?php echo $WEB_URL . '/add-to-cart.php?id=' . $product['product_id'] ?>">Thêm vào giỏ hàng</a>|
                     <a href="<?php echo $WEB_URL . '/detail.php?id=' . $product['product_id'] ?>">Chi tiết >></a>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 require_once 'connection.php';
-if (empty ($_GET['id'])) {
+if (empty($_GET['id'])) {
     header('Location: index.php');
 }
 $id = $_GET['id'];
@@ -10,11 +10,10 @@ $sql = "SELECT products.*, manufacturers.name AS manufacturer_name
         WHERE product_id = '$id'";
 $product = mysqli_query($conn, $sql)->fetch_assoc();
 
-if (empty ($product)) {
+if (empty($product)) {
     header('Location: index.php');
     exit;
 }
-?>
 ?>
 
 <?php
@@ -24,6 +23,12 @@ require_once 'header.php';
 ?>
 
 <div class="main">
+    <?php if (isset($_SESSION['success'])) { ?>
+        <div style="color: green; text-align: left">
+            <?php echo $_SESSION['success'] ?>
+            <?php unset($_SESSION['success']) ?>
+        </div>
+    <?php } ?>
     <div class="product-detail">
         <div class="top">
             <div class="left">
@@ -33,10 +38,10 @@ require_once 'header.php';
             </div>
             <div class="right">
                 <div class="name">
-                    
+
                     <?php echo $product['name'] ?>
                 </div>
-                <div class="description"> 
+                <div class="description">
                     <?php echo nl2br($product['description']) ?>
                 </div>
             </div>
@@ -50,6 +55,10 @@ require_once 'header.php';
             <div class="manufaturer">
                 Nhà cung cấp:
                 <?php echo $product['manufacturer_name'] ?>
+            </div>
+
+            <div class="add-to-cart">
+                <a href="add-to-cart.php?id=<?php echo $id ?>"><button>Thêm vào giỏ hàng</button></a>
             </div>
         </div>
 

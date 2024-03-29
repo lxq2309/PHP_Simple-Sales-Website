@@ -37,7 +37,12 @@ if (session_status() == PHP_SESSION_NONE) {
                     <a href="<?php echo $ADMIN_URL . '/root' ?>">Trang quản trị</a>
                 </li>
 
-                <?php if (!isset ($_SESSION['customer_id'])) { ?>
+                <li>
+                    <a class="<?php echo ($currentAction == "cart" ? "active" : '') ?>"
+                        href="<?php echo $WEB_URL . '/cart.php' ?>">Giỏ hàng (<?php echo count($_SESSION['cart']) ?>)</a>
+                </li>
+
+                <?php if (!isset($_SESSION['customer_id'])) { ?>
                     <li>
                         <a class="<?php echo ($currentAction == "login" ? "active" : '') ?>"
                             href="<?php echo $WEB_URL . '/login.php' ?>">Đăng nhập</a>

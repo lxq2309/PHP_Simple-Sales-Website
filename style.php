@@ -32,7 +32,7 @@
 
     .main {
         min-height: 600px;
-        margin: 0 50px;
+        margin: 0;
         width: 100%;
     }
 
@@ -133,6 +133,15 @@
 
     .product-detail .description {
         margin-top: 10px;
+    }
+
+    .product-detail .add-to-cart {
+        margin-top: 20px;
+    }
+
+    .product-detail .add-to-cart button {
+        background-color: aqua;
+        padding: 10px;
     }
 
     .footer {
