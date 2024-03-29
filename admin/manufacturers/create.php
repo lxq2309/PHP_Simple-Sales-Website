@@ -6,11 +6,13 @@ require_once '../layout/header.php';
 
 <div class="main">
     <h3><?php echo $title ?></h3>
-    <?php if (isset($_GET['error'])) { ?>
-        <span style="color: red;"><?php echo $_GET['error'] ?></span>
+    <?php if (isset($_SESSION['error'])) { ?>
+        <span style="color: red;"><?php echo $_SESSION['error'] ?></span>
+        <?php unset($_SESSION['error']) ?>
     <?php } ?>
-    <?php if (isset($_GET['success'])) { ?>
-        <span style="color: green;"><?php echo $_GET['success'] ?></span>
+    <?php if (isset($_SESSION['success'])) { ?>
+        <span style="color: green;"><?php echo $_SESSION['success'] ?></span>
+        <?php unset($_SESSION['success']) ?>
     <?php } ?>
     
     <form action="process-insert.php" method="post" enctype="multipart/form-data">

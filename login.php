@@ -30,14 +30,16 @@ require_once 'header.php';
                     <td><input type="submit" value="Đăng nhập"></td>
                 </tr>
             </table>
-            <?php if (isset ($_GET['error'])) { ?>
+            <?php if (isset ($_SESSION['error'])) { ?>
                 <div style="color: red; text-align: center">
-                    <?php echo $_GET['error'] ?>
+                    <?php echo $_SESSION['error'] ?>
+                    <?php unset($_SESSION['error']) ?>
                 </div>
             <?php } ?>
-            <?php if (isset ($_GET['success'])) { ?>
+            <?php if (isset ($_SESSION['success'])) { ?>
                 <div style="color: green; text-align: center">
-                    <?php echo $_GET['success'] ?>
+                    <?php echo $_SESSION['success'] ?>
+                    <?php unset($_SESSION['success']) ?>
                 </div>
             <?php } ?>
         </form>

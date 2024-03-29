@@ -2,6 +2,8 @@
 require_once '../../config.php';
 require_once '../../connection.php';
 
+session_start();
+
 if (empty ($_POST['product_id'])) {
     header("Location: index.php");
     exit;
@@ -9,7 +11,8 @@ if (empty ($_POST['product_id'])) {
 $id = $_POST['product_id'];
 // validate
 if (empty ($_POST['name']) || empty ($_POST['description']) || empty ($_POST['price'])) {
-    header("Location: edit.php?id=$id&error=Vui lòng nhập đầy đủ thông tin");
+    $_SESSION['error'] = 'Vui lòng nhập đầy đủ thông tin';
+    header("Location: edit.php?id=$id");
     exit;
 }
 
@@ -45,7 +48,9 @@ $sql = "UPDATE products SET
 try {
     mysqli_query($conn, $sql);
 } catch (\Throwable $th) {
-    header("Location: edit.php?id=$id&error=Lỗi hệ thống");
+    $_SESSION['error'] = 'Lỗi hệ thống';
+    header("Location: edit.php?id=$id");
     exit;
 }
-header("Location: edit.php?id=$id&success=Sửa thành công");
+$_SESSION['success'] = 'Sửa thành công';
+header("Location: edit.php?id=$id");

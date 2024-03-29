@@ -44,9 +44,10 @@ require_once 'header.php';
                     <td><input type="submit" value="Đăng ký"></td>
                 </tr>
             </table>
-            <?php if (isset ($_GET['error'])) { ?>
+            <?php if (isset ($_SESSION['error'])) { ?>
                 <div style="color: red; text-align: center">
-                    <?php echo $_GET['error'] ?>
+                    <?php echo $_SESSION['error'] ?>
+                    <?php unset($_SESSION['error']) ?>
                 </div>
             <?php } ?>
         </form>

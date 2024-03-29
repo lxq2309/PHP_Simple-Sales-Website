@@ -12,4 +12,6 @@ $sql = "DELETE FROM manufacturers
         WHERE manufacturer_id = '$id'
 ";
 mysqli_query($conn, $sql);
-header('Location: index.php?success=Xoá thành công');
+session_start();
+$_SESSION['success'] = "Xoá thành công";
+header('Location: index.php');

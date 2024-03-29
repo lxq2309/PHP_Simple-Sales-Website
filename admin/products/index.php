@@ -7,9 +7,10 @@ require_once '../layout/header.php';
 <div class="main">
     <h3>Quản lý sản phẩm</h3>
     <div class="create"><a href="create.php"><button>Thêm mới</button></a></div>
-    <?php if (isset ($_GET['success'])) { ?>
+    <?php if (isset ($_SESSION['success'])) { ?>
         <span style="color: green;">
-            <?php echo $_GET['success'] ?>
+            <?php echo $_SESSION['success'] ?>
+            <?php unset($_SESSION['success']) ?>
         </span>
     <?php } ?>
     <table width="100%" border="1px">

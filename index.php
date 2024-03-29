@@ -10,9 +10,10 @@ $products = mysqli_query($conn, $sql);
 ?>
 
 <div class="main">
-    <?php if (isset ($_GET['success'])) { ?>
+    <?php if (isset ($_SESSION['success'])) { ?>
         <div style="color: green; text-align: left">
-            <?php echo $_GET['success'] ?>
+            <?php echo $_SESSION['success'] ?>
+            <?php unset($_SESSION['success']) ?>
         </div>
     <?php } ?>
     <h2>DANH SÁCH SẢN PHẨM</h2>

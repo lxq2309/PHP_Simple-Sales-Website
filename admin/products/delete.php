@@ -12,4 +12,6 @@ $sql = "DELETE FROM products
         WHERE product_id = '$id'
 ";
 mysqli_query($conn, $sql);
-header('Location: index.php?success=Xoá thành công');
+session_start();
+$_SESSION['success'] = "Xoá thành công";
+header('Location: index.php');

@@ -13,14 +13,16 @@ $manufacturers = mysqli_query($conn, $sql);
     <h3>
         <?php echo $title ?>
     </h3>
-    <?php if (isset ($_GET['error'])) { ?>
+    <?php if (isset ($_SESSION['error'])) { ?>
         <span style="color: red;">
-            <?php echo $_GET['error'] ?>
+            <?php echo $_SESSION['error'] ?>
+            <?php unset($_SESSION['error']) ?>
         </span>
     <?php } ?>
-    <?php if (isset ($_GET['success'])) { ?>
+    <?php if (isset ($_SESSION['success'])) { ?>
         <span style="color: green;">
-            <?php echo $_GET['success'] ?>
+            <?php echo $_SESSION['success'] ?>
+            <?php unset($_SESSION['success']) ?>
         </span>
     <?php } ?>
 

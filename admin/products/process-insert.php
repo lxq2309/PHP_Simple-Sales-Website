@@ -1,9 +1,11 @@
 <?php
 require_once '../../config.php';
 require_once '../../connection.php';
+session_start();
 // validate
 if (empty ($_POST['name']) || empty ($_POST['description']) || empty ($_POST['price'])) {
-    header('Location: create.php?error=Vui lòng nhập đầy đủ thông tin');
+    $_SESSION['error'] = "Vui lòng nhập đầy đủ thông tin";
+    header('Location: create.php');
     exit;
 }
 
@@ -21,7 +23,9 @@ move_uploaded_file($image["tmp_name"], '../..' . $target_file);
 // insert
 $sql = "INSERT INTO products(name, description, price, image, manufacturer_id) VALUES ('$name', '$description', '$price', '$target_file', '$manufacturer_id')";
 if (mysqli_query($conn, $sql)) {
-    header('Location: create.php?success=Thêm thành công');
+    $_SESSION['success'] = 'Thêm thành công';
+    header('Location: create.php');
 } else {
-    header('Location: create.php?error=Lỗi hệ thống');
+    $_SESSION['error'] = "Lỗi hệ thống";
+    header('Location: create.php');
 }
