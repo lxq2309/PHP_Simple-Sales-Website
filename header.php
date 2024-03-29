@@ -9,6 +9,13 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 ?>
 
+<?php 
+if (!isset($_SESSION['cart'])) {
+    // Khởi tạo giỏ hàng trong session
+    $_SESSION['cart'] = array();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
