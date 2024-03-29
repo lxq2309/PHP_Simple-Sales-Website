@@ -4,7 +4,11 @@ $currentAction = "cart";
 require_once 'header.php';
 ?>
 
-<?php $cart = $_SESSION['cart'] ?>
+<?php
+if (isset($_SESSION['cart'])) {
+    $cart = $_SESSION['cart'];
+}
+?>
 
 <div class="main">
     <?php if (isset($_SESSION['success'])) { ?>

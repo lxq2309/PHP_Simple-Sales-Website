@@ -1,7 +1,6 @@
 <?php
 session_start();
-if(empty($_GET['id']))
-{
+if (empty($_GET['id'])) {
     header('Location: index.php');
 }
 $id = $_GET['id'];

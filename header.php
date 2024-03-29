@@ -9,13 +9,6 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 ?>
 
-<?php 
-if (!isset($_SESSION['cart'])) {
-    // Khởi tạo giỏ hàng trong session
-    $_SESSION['cart'] = array();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +25,7 @@ if (!isset($_SESSION['cart'])) {
 <body>
     <div class="header">
         <div class="left">
-            <h1><a href="<?php echo $WEB_URL ?>">WEBSITE BÁN HÀNG</a></h1>
+            <h1><a href="<?php echo $WEB_URL ?>">SALES WEBSITE</a></h1>
         </div>
         <div class="right">
             <ul>
@@ -46,7 +39,7 @@ if (!isset($_SESSION['cart'])) {
 
                 <li>
                     <a class="<?php echo ($currentAction == "cart" ? "active" : '') ?>"
-                        href="<?php echo $WEB_URL . '/cart.php' ?>">Giỏ hàng (<?php echo count($_SESSION['cart']) ?>)</a>
+                        href="<?php echo $WEB_URL . '/cart.php' ?>">Giỏ hàng (<?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0 ?>)</a>
                 </li>
 
                 <?php if (!isset($_SESSION['customer_id'])) { ?>
