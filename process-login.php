@@ -12,6 +12,7 @@ if (empty ($_POST['email']) || empty ($_POST['password'])) {
 
 $email = addslashes($_POST['email']);
 $password = addslashes($_POST['password']);
+$remember = isset($_POST['remember']);
 
 // login
 $sql = "SELECT * FROM customers WHERE email = '$email' AND password = '$password'";
@@ -26,6 +27,14 @@ if (mysqli_num_rows($result) != 1) {
     $_SESSION['customer_id'] = $customer['customer_id'];
     $_SESSION['customer_name'] = $customer['name'];
     $_SESSION['success'] = 'Đăng nhập thành công!';
+    if ($remember)
+    {
+        $token = uniqid('user_', true);
+        setcookie('remember', $token, time() + 86400 * 365);
+        $id = $customer['customer_id'];
+        $sql = "UPDATE customers SET token = '$token' WHERE customer_id = '$id'";
+        mysqli_query($conn, $sql);
+    }
     header('Location: index.php');
     exit;
 }
