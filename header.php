@@ -8,9 +8,14 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if ($currentAction === "cart" && empty($_SESSION['customer_id'])) {
+if (($currentAction === "cart" || $currentAction === "checkout") && empty($_SESSION['customer_id'])) {
     $_SESSION['error'] = 'Đăng nhập để tiếp tục';
     header('Location: login.php');
+    exit;
+}
+
+if ($currentAction === "checkout" && empty($_SESSION['cart'])) {
+    header('Location: index.php');
     exit;
 }
 ?>

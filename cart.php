@@ -36,7 +36,10 @@ if (isset($_SESSION['cart'])) {
                     </td>
                 </tr>
             <?php } else { ?>
+                <?php $totalPrice = 0 ?>
                 <?php foreach ($cart as $id => $each) { ?>
+                    <?php $price = $each['quantity'] * $each['price'] ?>
+                    <?php $totalPrice += $price ?>
                     <tr>
                         <td>
                             <?php echo $id ?>
@@ -47,7 +50,7 @@ if (isset($_SESSION['cart'])) {
                             <?php echo $each['name'] ?>
                         </td>
                         <td>
-                            <?php echo $each['price'] ?>
+                            <?php echo $price ?> VNĐ
                         </td>
                         <td>
                             <a href="update-quantity-from-cart.php?id=<?php echo $id ?>&type=dec">[-]</a>
@@ -55,14 +58,27 @@ if (isset($_SESSION['cart'])) {
                             <a href="update-quantity-from-cart.php?id=<?php echo $id ?>&type=inc">[+]</a>
                         </td>
                         <td>
-                            <?php echo $each['price'] * $each['quantity'] ?>
+                            <?php echo $each['price'] * $each['quantity'] ?> VNĐ
                         </td>
                         <td><a href="delete-from-cart.php?id=<?php echo $id ?>">Xoá</a></td>
                     </tr>
                 <?php } ?>
             <?php } ?>
+            <?php if (isset($totalPrice)) { ?>
+                <tr>
+                    <td colspan="7">
+                        <h3 style="text-align: left">Tổng giá trị đơn hàng:
+                            <?php echo $totalPrice ?> VNĐ
+                        </h3>
+                    </td>
+                </tr>
+            <?php } ?>
         </tbody>
     </table>
+    <?php if (isset($totalPrice)) { ?>
+        <a href="checkout.php"><button>Thanh toán</button></a>
+    <?php } ?>
+
 </div>
 
 <?php
