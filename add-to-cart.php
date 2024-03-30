@@ -6,6 +6,13 @@ session_start();
 
 if (empty($_GET['id'])) {
     header('location: index.php');
+    exit;
+}
+
+if (empty($_SESSION['customer_id'])) {
+    $_SESSION['error'] = 'Đăng nhập để tiếp tục';
+    header('Location: login.php');
+    exit;
 }
 $id = addslashes($_GET['id']);
 

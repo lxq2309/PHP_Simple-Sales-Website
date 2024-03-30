@@ -7,6 +7,12 @@ require_once 'connection.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+if ($currentAction === "cart" && empty($_SESSION['customer_id'])) {
+    $_SESSION['error'] = 'Đăng nhập để tiếp tục';
+    header('Location: login.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,10 +43,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     <a href="<?php echo $ADMIN_URL . '/root' ?>">Trang quản trị</a>
                 </li>
 
-                <li>
-                    <a class="<?php echo ($currentAction == "cart" ? "active" : '') ?>"
-                        href="<?php echo $WEB_URL . '/cart.php' ?>">Giỏ hàng (<?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0 ?>)</a>
-                </li>
+
 
                 <?php if (!isset($_SESSION['customer_id'])) { ?>
                     <li>
@@ -56,6 +59,12 @@ if (session_status() == PHP_SESSION_NONE) {
                         <a class="<?php echo ($currentAction == "user" ? "active" : '') ?>"
                             href="<?php echo $WEB_URL . '/user.php' . '?id=' . $_SESSION['customer_id'] ?>">
                             <?php echo $_SESSION['customer_name'] ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="<?php echo ($currentAction == "cart" ? "active" : '') ?>"
+                            href="<?php echo $WEB_URL . '/cart.php' ?>">Giỏ hàng (
+                            <?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0 ?>)
                         </a>
                     </li>
                     <li>
