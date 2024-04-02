@@ -58,6 +58,8 @@ $level = $_SESSION['level'];
             <?php } ?>
             <li><a class="<?php echo ($currentFolder == "products" ? "active" : '') ?>"
                     href="<?php echo $ADMIN_URL . '/products' ?>">Sản phẩm</a></li>
+            <li><a class="<?php echo ($currentFolder == "orders" ? "active" : '') ?>"
+                    href="<?php echo $ADMIN_URL . '/orders' ?>">Hoá đơn bán</a></li>
             <li><a class="<?php echo ($currentFolder == "customers" ? "active" : '') ?>"
                     href="<?php echo $ADMIN_URL . '/customers' ?>">Khách hàng</a></li>
             <?php if ($level > 0) { ?>
